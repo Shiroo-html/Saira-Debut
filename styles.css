@@ -1114,26 +1114,17 @@ section {
   font-size: 1rem;
 }
 
-.venue-map-placeholder {
+.venue-map {
   aspect-ratio: 16/11;
   border-radius: var(--radius);
   border: 1px solid rgba(212, 175, 106, 0.3);
-  background:
-    repeating-linear-gradient(0deg, rgba(212,175,106,0.06) 0 1px, transparent 1px 40px),
-    repeating-linear-gradient(90deg, rgba(212,175,106,0.06) 0 1px, transparent 1px 40px),
-    linear-gradient(160deg, var(--royal), var(--midnight));
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  color: var(--babyblue);
-  position: relative;
   overflow: hidden;
+  position: relative;
 }
-.venue-map-placeholder svg { width: 40px; height: 40px; color: var(--gold-light); }
-.venue-map-placeholder span { font-size: 0.85rem; }
-
+.venue-map-embed {
+  display: block;
+  filter: saturate(0.85) brightness(0.9);
+}
 /* =========================================================
    FINAL / CLOSING
    ========================================================= */
@@ -1400,7 +1391,6 @@ footer p {
 
   /* --- Venue --- */
   .venue-copy h3 { font-size: 1.5rem; }
-  .venue-map-placeholder svg { width: 32px; height: 32px; }
 
   /* --- Closing --- */
   .closing { min-height: 80svh; padding: 0 20px; }

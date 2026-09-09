@@ -617,18 +617,6 @@
         window.print();
       });
     }
-
-    const directionsBtn = document.getElementById('directionsBtn');
-    if (directionsBtn) {
-      directionsBtn.addEventListener('click', (e) => {
-        if (directionsBtn.getAttribute('href') === '#') {
-          e.preventDefault();
-          // Replace this placeholder with a real Google Maps link
-          // once the venue address is finalized, e.g.:
-          // https://www.google.com/maps/dir/?api=1&destination=YOUR+VENUE+ADDRESS
-        }
-      });
-    }
   }
 
   /* ---------------------------------------------------------
