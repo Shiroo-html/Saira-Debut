@@ -590,6 +590,49 @@
       });
     }
 
+    // "Save the Date" — generates a downloadable .ics calendar file
+    // that Google Calendar, Apple Calendar, and Outlook all recognize,
+    // so guests can add the event to their own calendar with one tap.
+    const saveDateBtn = document.getElementById('saveDateBtn');
+    if (saveDateBtn) {
+      saveDateBtn.addEventListener('click', () => {
+      // Event start/end — matches the countdown timer's target date.
+      // Format required by .ics: YYYYMMDDTHHMMSS (local time, no dashes/colons).
+      const startDate = '20260926T170000';
+      const endDate = '20260926T220000'; // assumes a ~5 hour event; adjust as needed
+
+      const title = "Saira's 18th Birthday Debut";
+      const description = 'Join us as we celebrate her journey into adulthood. A Dream in Blue & Gold.';
+      const location = '[Venue Name], [Street Address, City, Province, ZIP Code]';
+
+      const icsContent = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Saira 18th Debut//EN',
+        'CALSCALE:GREGORIAN',
+        'BEGIN:VEVENT',
+        `DTSTART:${startDate}`,
+        `DTEND:${endDate}`,
+        `SUMMARY:${title}`,
+        `DESCRIPTION:${description}`,
+        `LOCATION:${location}`,
+        `UID:${Date.now()}@sairas18thdebut`,
+        'END:VEVENT',
+        'END:VCALENDAR'
+        ].join('\r\n');
+
+        const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'Sairas-18th-Debut.ics';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+      });
+    }
+
     const shareBtn = document.getElementById('shareBtn');
     if (shareBtn) {
       shareBtn.addEventListener('click', async () => {
